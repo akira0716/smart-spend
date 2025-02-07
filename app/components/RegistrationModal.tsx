@@ -1,11 +1,11 @@
 'use client';
 
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 interface FormData {
   expenditureDate: string;
   expenditure: number;
-  category: number;
+  category: string;
   description: string;
 }
 
@@ -13,29 +13,18 @@ export default function RegisdivationModal() {
   const [data, setData] = useState<FormData>({
     expenditureDate: '',
     expenditure: 0,
-    category: 0,
+    category: '',
     description: '',
   });
-
-  // デバッグ
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const handlerFormChanged = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
 
-    let expenditure: number = 0;
-
-    if (name === 'expenditureDate') {
-      expenditure = Number.parseInt(value);
-    }
-
     setData((prevState) => ({
       ...prevState,
-      [name]: value,
+      [name]: name === 'expenditureDate' ? parseInt(value) : value,
     }));
   };
 
@@ -143,4 +132,5 @@ export enum Operation {
   CLOSE,
 }
 
+// Todo: データベースからマスタを取得する。
 const category = ['食費', '雑費', '日用品'];
