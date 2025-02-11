@@ -1,9 +1,13 @@
+import { ChevronRight2 } from '@deemlol/next-icons';
+
 export default function Page() {
   return (
     <div className='m-[15px] flex flex-col gap-[12px] h-custom-h'>
-      <div className='flex flex-col'>
-        <label htmlFor=''>表示年月</label>
-        <select className='px-[12px] py-[8px] w-[50%] rounded-lg text-xl'>
+      <label className='form-control w-full max-w-xs'>
+        <div className='label'>
+          <span className='label-text'>表示年月</span>
+        </div>
+        <select className='select select-bordered'>
           {optionObject.map((obj) => {
             const value = JSON.stringify(obj);
             const view = `${obj.year}年${obj.month}月`;
@@ -15,7 +19,7 @@ export default function Page() {
             );
           })}
         </select>
-      </div>
+      </label>
       <div className='bg-[#F1F1F1] grow p-[16px] flex flex-col gap-[16px]'>
         <div>
           <p>合計支出</p>
@@ -35,26 +39,9 @@ export default function Page() {
             <p>円</p>
           </div>
         </div>
-        <button
-          type='button'
-          className='rounded-[8px] bg-[#333333] text-white w-[160px] px-[8px] py-[8px] mt-[24px] flex justify-center items-center gap-[4px]'
-        >
+        <button className='btn btn-active btn-secondary'>
           詳細を確認する
-          <svg
-            width='16'
-            height='16'
-            viewBox='0 0 16 16'
-            fill='none'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              d='M8.66667 11.3333L12 7.99999L8.66667 4.66666M4 11.3333L7.33333 7.99999L4 4.66666'
-              stroke='#F5F5F5'
-              strokeWidth='4'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            />
-          </svg>
+          <ChevronRight2 size={32} color='#000000' />
         </button>
       </div>
     </div>

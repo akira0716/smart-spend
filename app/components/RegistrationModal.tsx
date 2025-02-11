@@ -24,7 +24,7 @@ export default function RegisdivationModal() {
 
     setData((prevState) => ({
       ...prevState,
-      [name]: name === 'expenditureDate' ? parseInt(value) : value,
+      [name]: name === 'expenditure' ? parseInt(value) : value,
     }));
   };
 
