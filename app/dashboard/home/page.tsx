@@ -1,6 +1,15 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 import { ChevronRight2 } from '@deemlol/next-icons';
 
-export default function Page() {
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect('/auth/login');
+  }
+
   return (
     <div className='m-[15px] flex flex-col gap-[12px] h-custom-h'>
       <label className='form-control w-full max-w-xs'>

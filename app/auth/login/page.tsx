@@ -1,13 +1,11 @@
 'use client';
 
-import { useRouter } from 'next/navigation'; // 画面遷移
 import { Playfair_Display } from 'next/font/google'; // フォント
+import { signIn } from 'next-auth/react';
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
 export default function Page() {
-  const { replace } = useRouter();
-
   return (
     <div className='hero bg-base-200 min-h-screen'>
       <div className='hero-content flex-col lg:flex-row-reverse lg:gap-20'>
@@ -42,7 +40,7 @@ export default function Page() {
             <div className='form-control mt-6'>
               <button
                 className='btn btn-primary'
-                onClick={() => replace('/dashboard/home')}
+                onClick={() => signIn('github')}
               >
                 ログイン
               </button>
